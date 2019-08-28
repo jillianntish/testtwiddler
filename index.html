@@ -1,28 +1,106 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="jquery.js"></script>
-    <script src="data_generator.js"></script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">s
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="data_generator.js"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
-  <body>
+<body>
     <script>
-
       $(document).ready(() => {
-        const $body = $('body');
-        $body.html('');
 
-        let index = streams.home.length - 1;
-        while (index >= 0){
+        const $body = $('body')
+        .css({
+        background: 'linear-gradient(to bottom, #33ccff 0%, #ff99cc 10%)',
+        margin: '0',
+        padding: '0',
+        'font-family': 'Century Gothic, sans-serif'
+        });
+
+
+
+        const $nav = $('<header/>')
+        .addClass('navi')
+        .css({
+          border: '4px',
+          'border-radius': '6px',
+          padding: '100px',
+          margin: '100px',
+          'text-decoration': 'strong',
+          'font-family': 'Century Gothic, sans-serif',
+          'font-size': '40px',
+          display: 'block'})
+        .insertBefore($body);
+
+        let $navmenu = $('<ul>')
+          let $li = $('<li>Nav</li>')
+          .attr('id', 'menu')
+          .add('Home')
+          .css({
+            margin: '0',
+            padding: '0',
+            border: '2px',
+            'border-radius': '4px'
+          });
+          $('#menu').appendTo('.nav')
+
+          const $container = $('<container>')
+     
+        $body.html('') //body is converted to an html string
+
+
+
+        const $button = $('<button/>', {
+          text: 'New Twiddles',
+          click: function () {
+            location.reload()
+          }
+        })
+        .css({
+          'margin': 'auto',
+          'display': 'block',
+          'border-radius': '10px',
+          'padding': '30px',
+          'font-size': '30px',
+          'background-color': 'silver'
+        });
+        $button.prependTo($nav)
+
+
+        let index = streams.home.length - 1; //index is the total length of the streams 'home' property
+        while (index >= 0){ //while loop that continues while condition is true
+          //condition is set to greater than zero which means it will be endless
           const tweet = streams.home[index];
-
-          const $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          //constiable called tweet which accesses
+          const $tweet = $('<div></div>')
+          .addClass('twiddles')
+          .css({
+            color: 'white',
+          'text-align': 'center',
+          'margin-bottom': '30px',
+          'margin-right': '60px',
+          'margin-left': '60px',
+          'font-family': 'Century Gothic, sans - serif',
+          'border-radius': '5px',
+          padding : '30px',
+          'border-style': 'solid' 
+        })
+          $tweet.text('@' + tweet.user + ': ' + tweet.message + ' twiddle sent at: ' + tweet.created_at);
           $tweet.appendTo($body);
+          
           index -= 1;
         }
 
       });
 
-    </script>
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
   </body>
 </html>
