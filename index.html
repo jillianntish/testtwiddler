@@ -6,16 +6,15 @@
     <link rel="stylesheet" href="stylized.css">
     </head>
 <body>
-
+<div class="title" href="index.html">TWIDDLER</div>
   <div class='container'>
       <div class='tweets'>
         <section class='main'></section>
-        <section class='newfeed'></section>
+        <section class='feeder'></section>
       </div>
 
     <script>
       $(document).ready(() => {
-
       
         var $body = $('.tweets');
         //created a new jQuery var that works with the tweets division
@@ -26,21 +25,18 @@
           //ariable called tweet which accesses users tweets
           var $tweet = $('<div></div>')  //jQueriable division element with class of 'tweet' assigned
           .addClass('tweet');
-          
-          let indexTwo = tweet.user;
-          let $usernames = indexTwo;
-
-      
-          let $users = $('<p class=users></p>');
-          let $message = $('<p class=message> </p>');
-          let $created_at = $('<span class=time> </span>');
+          // let indexTwo = tweet.user;
+          // let $usernames = indexTwo;      
+          var $users = $('<p class=users></p>');
+          var $message = $('<p class=message> </p>');
+          var $created_at = $('<span class=time> </span>');
           $tweet.appendTo('.main')
 
-          $users.addClass(tweet.user).text('@' + tweet.user + ' ').appendTo($tweet)
+
+          $users.text('@' + tweet.user + ' ').appendTo($tweet)
           $message.text(tweet.message).appendTo($tweet)
           $created_at.text(tweet.created_at).appendTo($tweet);
-        //  $tweet.text('@' + $usernames + ': ' + tweet.message + ' twiddle sent at: ' + tweet.created_at);
-          //$tweet.appendTo('#container');
+      
           index -= 1;
         }
       
@@ -52,63 +48,65 @@
         
           var newTweet = streams.home.pop();
 
-         var $newTweet = $('<div class=tweet></div>');
-          var $newUser = $('<p class=user></p>');
+          var $newTweet = $('<div class=tweet></div>');
+          var $newUser = $('<p class=users></p>');
           var $newMessage = $('<p class=message></p>');
-          var $newDateTime = $('<span class=dateTime></span>');
+          var $newDateTime = $('<span class=time></span>');
 
            
-          $newTweet.appendTo('.newfeed');
+          $newTweet.appendTo('.feeder');
           $newUser.addClass(newTweet.user).text('@' + newTweet.user + ' ').appendTo($newTweet);
           $newMessage.text(newTweet.message).appendTo($newTweet);
           $newDateTime.text(newTweet.created_at).appendTo($newTweet);
-          
         });
 
+        //click functions
+
+        var $homeButton = $("<input class='btn-home' type=button value='Nest'>");
         
-        var $homeButton = $("<input class='btn-home' type=button value='Seed'>");
         $homeButton.on('click', function (event) {
-          event.preventDefault();
+          //event.preventDefault();
           $('.timeline').remove();
           $('div').show(400);
           $('.new').show(400);
           $homeButton.hide(400);
         });
-        $homeButton.insertBefore($button).hide();
+        $homeButton.insertAfter($button).hide();
         
 
-      
-          $('.tweets').on('click', '.tweet .user', function (event) {
-          event.preventDefault();
+         $('.users').on('mouseover', function () {
+          $(this).addClass('highlight');
+        });
 
-          var user = $(this).data('user');
+        $('.users').on('mouseleave', function () {
+          $(this).removeClass('highlight');
+        });
+        
 
-          $('.timeline').remove();
-          var $timeline = $('<h1 class=timeline>' + user + '\'s Timeline</h1>');
+
+
+          $('.users').on('click', function (event) {
+           event.preventDefault();
+          var $user = $(this).data('.users');
+          $('.timeline').show();
+
+          var $timeline = $('<h1 class=title>' + tweet.user + '\'s twiddles</h1>');
           $timeline.prependTo($body);
           $('.new').hide();
           $homeButton.show(400);
 
-          $('.tweet').not("div:contains('" + user + "')").hide(400);
-          $("div:contains('" + user + "')").show(400);
+          $('.tweet').not("div:contains('" + tweet.user + "')").hide(400);
+          $("div:contains('" + tweet.user + "')").show(400);
 
         });
-        // $home.insertAfter($button).hide();
+        
 
         //  $('.tweets')
         //   .on('click', function (event) {
         //     event.preventDefault();
         //   });
 
-        //  $('.users').on('mouseover', function () {
-        //   $(this).addClass('highlight');
-        // });
-
-        // $('.users').on('mouseleave', function () {
-        //   $(this).removeClass('highlight');
-        // });
-        
-
+      
         // $('.tweets')
         //   .on('click', '.tweet.user', function(event){
         //   event.preventDefault();
