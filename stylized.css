@@ -3,29 +3,19 @@ body{
   background-repeat: no-repeat;
   background-attachment: fixed;
   margin: 20px;
-  font-family: Century Gothic, sans-serif;
-}
- 
-.ul {
-  list-style-type: none;
-  margin: 'auto';
-  padding: 10%;
-  background-color: transparent;
-  float: left;
-  overflow: auto;
-
- 
-}
-
-.title {
-  display: block;
-  position: fixed;
-  cursor: pointer;
-  margin: 'auto';
-  size: 20vw;;
+  size: 40px;
   color: rgba(90, 151, 95, 0.945); 
+}
+
+
+header {
+  position: fixed;
+  font-size: 40px;
+  color: rgba(90, 151, 955); 
   font-family: Century Gothic, sans-serif;
 }
+
+
 .tweet{
    color: rgba(90, 151, 95, 0.945); 
           text-align: center;
@@ -33,8 +23,8 @@ body{
           margin-top: 20px;
           margin-bottom: 20px;
           font-size: 18px;
-          margin-right: 40px;
-          margin-left: 40px;
+          margin-right: 10px;
+          margin-left: 10px;
           font-family: Century Gothic, sans - serif;
           border-radius: 20px;
           padding : 30px;
@@ -42,19 +32,13 @@ body{
           opacity: 1;
 }
 
-.users{
+.user{
    color: rgba(90, 151, 95, 0.945);      
   font-family: Century Gothic, sans - serif;
   cursor: pointer;
   font-size: 16px;
 }
 
-.new{
-  color: rgb(135, 165, 87);
-  font-weight: bold;
-  font-size: 18px;
-
-}
 .message{
   color: rgb(135, 165, 87);
   font-weight: bold;
@@ -94,7 +78,7 @@ body{
 
 
 .timeline{
-  background-image: url("https://images.unsplash.com/photo-1560040294-15c99e1ea00f?");
+  /* background-image: url("https://images.unsplash.com/photo-1560040294-15c99e1ea00f?"); */
           color: rgba(90, 151, 95, 0.945); 
           text-align: center;
           font-style: italics;
